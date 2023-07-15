@@ -6,12 +6,15 @@
 <head runat="server">
     <title></title>
     <script>
-        function ShowPreview() {/*
-            let url = document.getElementById("FileUpoad1")
-            let filePath = url.value;*/
+        function ShowPreview() {
             let fileInput = document.getElementById("FileUpload1");
             let filePath = fileInput.value; // Retrieve the file path
             alert(filePath)
+            // Get the image element by ID
+            let imageElement = document.getElementById("Image1");
+
+            // Set the source attribute of the image element
+            imageElement.src = window.URL.createObjectURL(fileInput.files[0]);
         }
     </script>
 </head>
@@ -20,6 +23,7 @@
         <div>
             <asp:FileUpload ID="FileUpload1" onchange="ShowPreview(this)" runat="server" />
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            <asp:Image ID="Image1" runat="server" />
         </div>
     </form>
 </body>
