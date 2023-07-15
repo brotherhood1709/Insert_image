@@ -23,7 +23,7 @@
         <div>
             <asp:FileUpload ID="FileUpload1" onchange="ShowPreview(this)" runat="server" />
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-            <asp:Image ID="Image1" runat="server" />
+            <asp:Image ID="Image1" runat="server"  Height="200" Width="200"/>
         </div>
     </form>
 </body>
