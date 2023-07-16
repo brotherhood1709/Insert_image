@@ -9,7 +9,6 @@
         function ShowPreview() {
             let fileInput = document.getElementById("FileUpload1");
             let filePath = fileInput.value; // Retrieve the file path
-            alert(filePath)
             // Get the image element by ID
             let imageElement = document.getElementById("Image1");
 
@@ -23,6 +22,18 @@
         <div>
             <asp:FileUpload ID="FileUpload1" onchange="ShowPreview(this)" runat="server" />
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+            <asp:DataList ID="DataList1" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataKeyField="Id" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal">
+                <ItemTemplate>
+                    Id:
+                    <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                    <br />
+                    images:
+                    <asp:Label ID="imagesLabel" runat="server" Text='<%# Eval("images") %>' />
+                    <br />
+                </ItemTemplate>
+                <SelectedItemStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
+            </asp:DataList>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [images]"></asp:SqlDataSource>
             <asp:Image ID="Image1" runat="server"  Height="200" Width="200"/>
         </div>
     </form>
