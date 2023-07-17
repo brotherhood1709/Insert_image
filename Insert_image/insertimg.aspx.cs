@@ -15,6 +15,10 @@ namespace Insert_image
         SqlConnection cn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=F:\\Parth\\Insert_image\\Insert_image\\App_Data\\images.mdf;Integrated Security=True");
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+               
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -23,12 +27,11 @@ namespace Insert_image
             if (fileExtension == ".pdf" || fileExtension == ".jpg")
             {
                 FileUpload1.SaveAs(Server.MapPath("images/" + FileUpload1.FileName));
-                string sql = "insert into images values('" + FileUpload1.FileName + "')";
-                SqlDataAdapter adapter = new SqlDataAdapter(sql, cn);
+                string sql = "insert into images values('"+FileUpload1.FileName+"')";
+                SqlDataAdapter da = new SqlDataAdapter(sql,cn);
                 DataSet dt = new DataSet();
-                DataList1.DataSource = dt;
                 DataList1.DataBind();
-                adapter.Fill(dt);
+                da.Fill(dt);
                 Fill();
             }
             else
@@ -42,11 +45,9 @@ namespace Insert_image
             string sql = "select * from images";
             SqlDataAdapter adapter = new SqlDataAdapter(sql, cn);
             DataSet dt = new DataSet();
-            DataList2.DataSource = dt;
-            DataList2.DataBind();
+            DataList1.DataBind();
             adapter.Fill(dt);
             Response.Write("Selected");
-
         }
         /*
          CREATE TABLE [dbo].[Registration] (

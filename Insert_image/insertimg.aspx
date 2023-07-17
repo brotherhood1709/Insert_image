@@ -20,21 +20,21 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Image ID="Image1" runat="server"  Height="200" Width="200"/>
+
             <asp:FileUpload ID="FileUpload1" onchange="ShowPreview(this)" runat="server" />
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
-            <asp:DataList ID="DataList1" runat="server" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataKeyField="Id" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal">
+            <asp:DataList ID="DataList1" runat="server" RepeatDirection="Horizontal" DataKeyField="Id" DataSourceID="SqlDataSource1" Font-Bold="False" Font-Italic="False" Font-Overline="False" Font-Size="Large" Font-Strikeout="False" Font-Underline="False" RepeatColumns="2" style="margin-right: 26px">
                 <ItemTemplate>
                     Id:
                     <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
                     <br />
-                    images:
-                    <asp:Label ID="imagesLabel" runat="server" Text='<%# Eval("images") %>' />
+                    images:<asp:Image ID="Image2" runat="server" Height="115px" Width="123px" />
+                    <br />
                     <br />
                 </ItemTemplate>
-                <SelectedItemStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
             </asp:DataList>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [images]"></asp:SqlDataSource>
-            <asp:Image ID="Image1" runat="server"  Height="200" Width="200"/>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [images]"></asp:SqlDataSource>
         </div>
     </form>
 </body>
