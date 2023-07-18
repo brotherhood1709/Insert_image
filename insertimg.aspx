@@ -29,7 +29,7 @@
                     Id:
                     <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
                     <br />
-                    images:<asp:Image ID="Image2" runat="server" Height="115px" Width="123px" />
+                    images:<asp:Image ID="Image2" runat="server" ImageUrl='<%# Eval("images","~/images/{0}") %>' Height="115px" Width="123px" />
                     <br />
                     <br />
                 </ItemTemplate>
